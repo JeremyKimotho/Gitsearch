@@ -26,6 +26,7 @@ export class UsersRequestService {
     let promise = new Promise((resolve, reject) => {
       this.http.get<ApiResponse>(environment.apiUrl).toPromise().then(response => {
         this.users.name = response.name
+        this.users.bio = response.bio
       })
     })
   }
