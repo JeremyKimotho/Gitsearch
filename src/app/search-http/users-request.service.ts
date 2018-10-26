@@ -16,17 +16,23 @@ export class UsersRequestService {
     interface ApiResponse{
       name:string,
       bio:string,
-      repos:number,
+      public_repos:number,
       followers:number,
       following:number,
-      picture:any,
-      link:any,
-      dateOfCreation:any
+      avatar_url:any,
+      url:any,
+      created_at:any
     }
     let promise = new Promise((resolve, reject) => {
       this.http.get<ApiResponse>(environment.apiUrl).toPromise().then(response => {
         this.users.name = response.name
         this.users.bio = response.bio
+        this.users.public_repos = response.public_repos
+        this.users.followers = response.followers
+        this.users.following = response.following
+        this.users.avatar_url = response.avatar_url
+        this.users.url= response.url
+        this.users.created_at = response.created_at
       })
     })
   }

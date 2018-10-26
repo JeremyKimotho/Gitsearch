@@ -9,7 +9,7 @@ import { UsersRequestService } from '../search-http/users-request.service';
 })
 export class UsersComponent implements OnInit {
 
-  users: User[] = [];
+  users: User
 
   constructor(public usersRequester: UsersRequestService) { }
 
