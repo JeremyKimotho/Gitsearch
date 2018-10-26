@@ -1,0 +1,53 @@
+.card{
+  background-color:white;
+  height:400px;
+  width:500px;
+  border-radius: 20px;
+  color:black;
+  margin-top:35px;
+  margin-left:25px;
+}
+#info{
+  width:600px;
+}
+:placeholder-shown{
+  text-align:center;
+}
+.searchElements{
+  margin-top:75px;
+  height:50px;
+  width:100px;
+  margin-left:35px;
+}
+#searchButton{
+  font-size:20px;
+  border-radius: 20px;
+  background-color:#273746;
+  color:white;
+}
+#inputArea{
+  width:300px;
+  border-radius: 8px;
+}
+form input{
+  color:black;
+}
+img{
+  width:150px;
+  height:150px;
+  float:right;
+  margin-right:7px;
+  margin-top:7px;
+  border-radius:5px;
+}
+#username{
+  text-align:center;
+  text-decoration:underline;
+  margin-top:7px;
+}
+.userText{
+  color:#273746;
+}
+#centerLink{
+  text-align:center;
+}
