@@ -5,40 +5,31 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class DaysSinceCreationPipe implements PipeTransform {
 
-  transform(memberSince): number {
-    let today: Date = new Date();
-    let todayWithNoTime:any = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-    var dateDifference = Math.abs(memberSince-todayWithNoTime);
-    const secondsInADay = 86400;
-
-    var dateDifferenceSeconds = dateDifference*0.001;
-
-    var dateCounter=dateDifferenceSeconds/secondsInADay;
-
-    if(dateCounter>=1 && memberSince> todayWithNoTime){
-      return dateCounter
-    }else{
-      console.log(`What's going on here, this guy a hacker`)
-    }
+  transform(created_at){
+    let dateAccountCreated = new Date(created_at);
+    let secondsPast = dateAccountCreated.getTime()/1000;
+    let daysPast = secondsPast/86400;
+    let currentDate= new Date ();
+    let secondsPastCD= currentDate.getTime()/1000;
+    let daysPastCD = secondsPastCD/86400
+    let daysPastSince:any= daysPastCD-daysPast
+    return parseInt(daysPastSince)
   }
-
 }
-// export class DateCountPipe implements PipeTransform {
 
-//   transform(value: any): number {
-//     let today: Date = new Date(); //get current date and time
-//     let todayWithNoTime: any = new Date(today.getFullYear(), today.getMonth(), today.getDate())
-//     var dateDifference = Math.abs(value - todayWithNoTime)// returns value in milliseconds
-//     const secondsInADay = 86400; //60 seconds*60 minutes in an hour *24 hours
 
-//     var dateDifferenceSeconds = dateDifference * 0.001; //converts to seconds
-
-//     var dateCounter = dateDifferenceSeconds / secondsInADay;
-
-//     if (dateCounter >= 1 && value > todayWithNoTime) {
-//       return dateCounter;
-//     } else {
-//       return 0;
-//     }
+// transform(created_at){
+//   let dateConvert = new Date(created_at);
+//   let year = dateConvert.getFullYear();
+//   let month: any = dateConvert.getMonth() + 1;
+//   let dt: any = dateConvert.getDate();
+//   if (dt < 10) {
+//     dt = '0' + dt.toString()
 //   }
+//   if (month < 10) {
+//     month = '0' + month
+//   }
+//   var useableDate = year + '-' + month + '-' + dt
+//   console.log(`I am pipe and I say ` + useableDate)
+//   return useableDate
 // }

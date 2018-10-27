@@ -15,7 +15,7 @@ export class UsersComponent implements OnInit {
 
   search = '';
 
-  constructor(public defaultRequester: UsersRequestService, public userRequester: UsersRequestService) { }
+  constructor(public defaultRequester: UsersRequestService, public userRequester: UsersRequestService, public reposRequester: UsersRequestService) { }
 
   ngOnInit() {
     this.defaultRequester.default()
@@ -27,6 +27,11 @@ export class UsersComponent implements OnInit {
     this.userRequester.userSearch(search)
     this.users = this.userRequester.users
     this.search= ''
+  }
+
+  viewRepos(search){
+    this.search = search;
+    this.reposRequester.repoSearch(search)
   }
 
 }

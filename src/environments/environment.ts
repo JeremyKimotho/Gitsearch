@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiDefaultUrl: `https://api.github.com/users/jeremykimotho?access_token=2b56f79b8a2380b18592138715fcc2578c964fde`,
-  apiSearchUrl: `https://api.github.com/users/`
+  apiSearchUrl: `https://api.github.com/users/`,
 }
 /*
  * For easier debugging in development mode, you can import the following file
@@ -16,4 +16,4 @@ export const environment = {
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
 
-
+// apiReposUrl: `https://api.github.com/users/jeremykimotho/repos?access_token=2b56f79b8a2380b18592138715fcc2578c964fde`

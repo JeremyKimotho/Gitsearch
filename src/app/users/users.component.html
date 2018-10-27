@@ -16,8 +16,9 @@
         <h3>Followers: {{users.followers}}</h3>
         <h3>Following: {{users.following}}</h3>
         <h3>Repositories: {{users.public_repos}}</h3>
-        <h3>Member for: {{memberSince}}</h3>
+        <h3>Member for: {{users.created_at|daysSinceCreation}} days</h3>
         <a id='centerLink' href={{users.html_url}} target='_blank'><h3>Link to profile</h3></a>
+        <button (click)='viewRepos()'>View Repos</button>
       </div>
     </div>
   </div>

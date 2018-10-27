@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { User } from '../users';
+import { Repos } from '../repos';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+
+
 
 
 @Injectable({
@@ -10,6 +13,8 @@ import { environment } from '../../environments/environment';
 export class UsersRequestService {
 
   users: User
+
+  Repos: Repos[]=[];
 
   constructor(private http:HttpClient) { 
     this.users = new User('', '', 0, 0, 0, 0, 0, 0)
@@ -36,9 +41,6 @@ export class UsersRequestService {
         this.users.avatar_url = response.avatar_url
         this.users.html_url= response.html_url
         this.users.created_at = response.created_at
-        let createdAt = response.created_at
-        let memberSince = createdAt.substr(0, 10)
-        console.log(`I've been a member since ${memberSince}`)
         if (response.bio == null) {
           this.users.bio = 'Beast Mode Loading 💪🏾!'
         }
@@ -72,9 +74,6 @@ export class UsersRequestService {
         this.users.avatar_url = response.avatar_url
         this.users.html_url = response.html_url
         this.users.created_at = response.created_at
-        let createdAt= response.created_at
-        let memberSince=createdAt.substr(0,10)
-        console.log(`I've been a member since ${memberSince}`)
         if (response.bio==null){
           this.users.bio = `I'm in love with the co-ding! ✌🏾`
         }
@@ -86,6 +85,30 @@ export class UsersRequestService {
         })
       return promise
     })
+
+  }
+
+  repoSearch(searchItem) {
+    interface ApiResponse{
+      name:any
+    }
+    let promise = new Promise((resolve, reject) => {
+      this.http.get<ApiResponse>(environment.apiSearchUrl + searchItem + `/repos?access_token=2b56f79b8a2380b18592138715fcc2578c964fde`).toPromise().then(response => {
+        for (let i = 0; i < response.name; i++) {
+          let userRepos = name
+          this.Repos.push(userRepos)
+          console.log(this.Repos)
+        }
+        resolve()
+      },
+        error => {
+          console.log('This user has no repos')
+          reject(error)
+        }
+      )
+      return promise
+    })
   }
 }
+
 
