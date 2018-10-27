@@ -36,6 +36,9 @@ export class UsersRequestService {
         this.users.avatar_url = response.avatar_url
         this.users.html_url= response.html_url
         this.users.created_at = response.created_at
+        let createdAt = response.created_at
+        let memberSince = createdAt.substr(0, 10)
+        console.log(`I've been a member since ${memberSince}`)
         if (response.bio == null) {
           this.users.bio = 'Beast Mode Loading 💪🏾!'
         }
@@ -69,6 +72,9 @@ export class UsersRequestService {
         this.users.avatar_url = response.avatar_url
         this.users.html_url = response.html_url
         this.users.created_at = response.created_at
+        let createdAt= response.created_at
+        let memberSince=createdAt.substr(0,10)
+        console.log(`I've been a member since ${memberSince}`)
         if (response.bio==null){
           this.users.bio = `I'm in love with the co-ding! ✌🏾`
         }
