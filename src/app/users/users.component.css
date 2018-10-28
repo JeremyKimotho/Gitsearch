@@ -60,4 +60,5 @@ img{
   height:50px;
   width:200px;
   margin-left:200px;
+  border: 1px dotted black;
 }
