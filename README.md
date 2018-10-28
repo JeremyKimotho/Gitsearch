@@ -1,5 +1,5 @@
 # Gitsearch
-#### An application that searches for usernames on github, 27-10-2018
+#### An application that searches for usernames on github, {{27-10-2018}}
 #### By **Jeremy Kimotho**
 ## Description
 This is an angular application that uses the github api to retrieve data using the provided usernames and return a profile picture and followers and following. As well as number of repositories and lists them. 
