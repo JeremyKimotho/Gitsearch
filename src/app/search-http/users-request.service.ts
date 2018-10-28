@@ -109,6 +109,7 @@ export class UsersRequestService {
           reject(error)
         },
       )
+      this.Repos.length=0
       return promise
     })
   }

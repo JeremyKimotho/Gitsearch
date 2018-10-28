@@ -19,8 +19,8 @@
         <h3>Member for: {{users.created_at|daysSinceCreation}} days</h3>
         <a id='centerLink' href={{users.html_url}} target='_blank'><h3>Link to profile</h3></a>
         <button id='reposButton' (click)='viewRepos()'>View Repos</button>
-        <div class='row' *ngFor='let Repos of Repos; let i = index'>
-          <h2 id='{{i}}'>{{Repos.name}}</h2>
+        <div id='repos' class='row' *ngFor='let Repos of Repos; let i = index'>
+          <h4 id='{{i}}'>{{Repos}}</h4>
         </div>
       </div>
     </div>
