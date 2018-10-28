@@ -6,12 +6,14 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
 import { DaysSinceCreationPipe } from './days-since-creation.pipe';
+import { HighlightDirective } from './highlight.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
-    DaysSinceCreationPipe
+    DaysSinceCreationPipe,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,

@@ -17,7 +17,7 @@ export class UsersRequestService {
   Repos: Repos[]=[];
 
   constructor(private http:HttpClient) { 
-    this.users = new User('', '', 0, 0, 0, 0, 0, 0)
+    this.users = new User('', '', 0, 0, 0, 0, 0, 0, 0)
   }
 
   default(){
@@ -30,6 +30,7 @@ export class UsersRequestService {
       avatar_url:any,
       html_url:any,
       created_at:any
+      repos_url:any
     }
     let promise = new Promise((resolve, reject) => {
       this.http.get<ApiResponse>(environment.apiDefaultUrl).toPromise().then(response => {
@@ -41,6 +42,7 @@ export class UsersRequestService {
         this.users.avatar_url = response.avatar_url
         this.users.html_url= response.html_url
         this.users.created_at = response.created_at
+        this.users.repos_url = response.repos_url
         if (response.bio == null) {
           this.users.bio = 'Beast Mode Loading 💪🏾!'
         }
@@ -63,6 +65,7 @@ export class UsersRequestService {
       avatar_url: any,
       html_url: any,
       created_at: any
+      repos_url: any
     }
     let promise = new Promise((resolve, reject) => {
       this.http.get<ApiResponse>(environment.apiSearchUrl + searchItem + `?access_token=2b56f79b8a2380b18592138715fcc2578c964fde`).toPromise().then(response => {
@@ -74,6 +77,7 @@ export class UsersRequestService {
         this.users.avatar_url = response.avatar_url
         this.users.html_url = response.html_url
         this.users.created_at = response.created_at
+        this.users.repos_url = response.repos_url
         if (response.bio==null){
           this.users.bio = `I'm in love with the co-ding! ✌🏾`
         }
@@ -88,23 +92,22 @@ export class UsersRequestService {
 
   }
 
-  repoSearch(searchItem) {
+  repoSearch() {
     interface ApiResponse{
       name:any
     }
     let promise = new Promise((resolve, reject) => {
-      this.http.get<ApiResponse>(environment.apiSearchUrl + searchItem + `/repos?access_token=2b56f79b8a2380b18592138715fcc2578c964fde`).toPromise().then(response => {
-        for (let i = 0; i < response.name; i++) {
-          let userRepos = name
-          this.Repos.push(userRepos)
-          console.log(this.Repos)
+      this.http.get<ApiResponse>(this.users.repos_url).toPromise().then(response => {
+        for(let i in response){
+          console.log(response[i].name)
+          this.Repos.push(response[i].name)
         }
         resolve()
       },
         error => {
           console.log('This user has no repos')
           reject(error)
-        }
+        },
       )
       return promise
     })

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../users';
 import { UsersRequestService } from '../search-http/users-request.service';
 import { DaysSinceCreationPipe } from '.././days-since-creation.pipe';
+import { HighlightDirective } from '../highlight.directive';
+import {Repos } from '../repos'
 
 
 @Component({
@@ -12,6 +14,7 @@ import { DaysSinceCreationPipe } from '.././days-since-creation.pipe';
 export class UsersComponent implements OnInit {
 
   users: User;
+  Repos: Repos[]=[];
 
   search = '';
 
@@ -29,9 +32,9 @@ export class UsersComponent implements OnInit {
     this.search= ''
   }
 
-  viewRepos(search){
-    this.search = search;
-    this.reposRequester.repoSearch(search)
+  viewRepos(){
+    this.reposRequester.repoSearch()
+    this.Repos = this.reposRequester.Repos
   }
 
 }
